@@ -4,10 +4,12 @@ import static dlangina.filters.CustomLogFilter.customLogFilter;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class TestFromLesson {
 
+  @Disabled("Не является частью дз")
   @Test
   void authorizeTest() {
     String data = "{" +

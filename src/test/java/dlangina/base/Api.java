@@ -5,17 +5,20 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
 public class Api {
 
+  @Step
   public static void setUpRestAssured() {
     RestAssured.baseURI = "https://reqres.in";
     RestAssured.basePath = "/";
     RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
   }
 
+  @Step
   public String getInformationOfUserById(int id) {
     return given()
         .filter(customLogFilter().withCustomTemplates())
@@ -28,6 +31,7 @@ public class Api {
         .extract().body().asString();
   }
 
+  @Step
   public String getTotal() {
     return given()
         .filter(customLogFilter().withCustomTemplates())
@@ -39,6 +43,7 @@ public class Api {
         .extract().body().jsonPath().getString("total");
   }
 
+  @Step
   public void createUser(String name, String job) {
     given()
         .filter(customLogFilter().withCustomTemplates())
@@ -54,6 +59,7 @@ public class Api {
         .body("createdAt", notNullValue());
   }
 
+  @Step
   public void updateUser(int id, String name, String job) {
     given()
         .filter(customLogFilter().withCustomTemplates())
@@ -70,6 +76,7 @@ public class Api {
         .extract().body().asString();
   }
 
+  @Step
   public void registrationByApi() {
     given()
         .filter(customLogFilter().withCustomTemplates())
