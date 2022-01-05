@@ -19,7 +19,7 @@ public class TestFromLesson {
         .filter(customLogFilter().withCustomTemplates())
         .contentType("application/json")
         .accept("application/json")
-        .body(data.toString())
+        .body(data)
         .when()
         .log().uri()
         .log().body()
